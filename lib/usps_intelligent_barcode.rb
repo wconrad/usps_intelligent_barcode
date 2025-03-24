@@ -1,5 +1,3 @@
-require 'andand'
-require 'memoizer'
 require 'yaml'
 
 require 'usps_intelligent_barcode/bar_map'

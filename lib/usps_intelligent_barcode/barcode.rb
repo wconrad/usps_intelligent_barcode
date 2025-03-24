@@ -10,8 +10,6 @@ module Imb
   # for printing using a barcode font.
   class Barcode
 
-    include Memoizer
-
     # @return [BarcodeId]
     attr_reader :barcode_id
 
@@ -100,20 +98,18 @@ module Imb
     #
     # @return [Integer]
     def binary_data
-      components.inject(0) do |data, component|
+      @binary_data ||= components.inject(0) do |data, component|
         component.shift_and_add_to(data, long_mailer_id?)
       end
     end
-    memoize :binary_data
 
     # Compute the "frame check sequence."  See spec. section 2.2.2
     # ("Step 2--Generation of 11-Bit CRC on Binary Data").
     #
     # @return [Integer]
     def frame_check_sequence
-      CRC.crc(binary_data)
+      @frame_check_sequence ||= CRC.crc(binary_data)
     end
-    memoize :frame_check_sequence
 
     # Compute the "code words."  This is an array of 10 integers
     # computed from the binary data.  See spec. section 2.2.3 ("Step
@@ -121,15 +117,16 @@ module Imb
     #
     # @return [Array<Integer>] 10 "characters."
     def codewords
-      codewords = []
-      data = binary_data
-      data, codewords[9] = data.divmod 636
-      8.downto(0) do |i|
-        data, codewords[i] = data.divmod 1365
+      @codewords ||= begin
+        codewords = []
+        data = binary_data
+        data, codewords[9] = data.divmod 636
+        8.downto(0) do |i|
+          data, codewords[i] = data.divmod 1365
+        end
+        codewords
       end
-      codewords
     end
-    memoize :codewords
 
     # Insert the orientation into the codewords.  The spec. doesn't
     # say much about this, other than to multiply codeword "J" by two.

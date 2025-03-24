@@ -113,7 +113,7 @@ module Imb
     NUM_DIGITS = 11 #:nodoc:
 
     def arg_to_i(o)
-      o.andand.to_i
+      o ? o.to_i : o
     end
     
     # Convert to an integer value

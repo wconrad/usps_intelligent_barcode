@@ -74,23 +74,17 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<andand>, ["~> 1.3"])
-      s.add_runtime_dependency(%q<memoizer>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0"])
       s.add_development_dependency(%q<rake>, ["~> 11.2"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<yard>, ["~> 0.8.5"])
     else
-      s.add_dependency(%q<andand>, ["~> 1.3"])
-      s.add_dependency(%q<memoizer>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0"])
       s.add_dependency(%q<rake>, ["~> 11.2"])
       s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<yard>, ["~> 0.8.5"])
     end
   else
-    s.add_dependency(%q<andand>, ["~> 1.3"])
-    s.add_dependency(%q<memoizer>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0"])
     s.add_dependency(%q<rake>, ["~> 11.2"])
     s.add_dependency(%q<simplecov>, [">= 0"])
