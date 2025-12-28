@@ -18,7 +18,7 @@ most methods and classes, and eliminated the #draw method.
 
 # Install
 
-    $ gem install USPS-intelligent-barcode
+    gem install USPS-intelligent-barcode
 
 # Example
 
