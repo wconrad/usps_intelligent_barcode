@@ -77,6 +77,22 @@ Both examples use the same test data and generate barcodes according to
 USPS specifications with proper bar heights (Ascender, Descender, Tracker,
 and Full).
 
+## Font-Based Examples
+
+Two additional examples use USPS barcode fonts instead of drawing bars:
+
+`examples/barcode_to_svg_font.rb` and `examples/barcode_to_pdf_font.rb`
+generate SVG and PDF files using USPS Intelligent Mail Barcode fonts.
+
+```ruby
+ruby examples/barcode_to_svg_font.rb
+gem install prawn && ruby examples/barcode_to_pdf_font.rb
+```
+
+These require a USPS IMB font (USPSIMBStandard, USPSIMBCompact, or
+USPSIMB) installed from
+https://ribbs.usps.gov/onecodesolution/download.cfm
+
 # Standard
 
 This gem is based upon standard
