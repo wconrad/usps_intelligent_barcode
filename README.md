@@ -18,13 +18,18 @@ most methods and classes, and eliminated the #draw method.
 
 # Install
 
-    gem install USPS-intelligent-barcode
+    gem install usps_intelligent_barcode
+
+Note: This gem was previously named `USPS-intelligent-barcode`. If
+you're migrating from the old gem name, see
+[MIGRATION.md](MIGRATION.md).
 
 # Example
 
-```
+```ruby
 #!/usr/bin/env ruby
-
+lib_dir = File.expand_path('../lib', __dir__)
+$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 require 'usps_intelligent_barcode'
 
 barcode_id = '01'
