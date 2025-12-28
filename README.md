@@ -46,6 +46,37 @@ p barcode.barcode_letters
 # => "AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA"
 ```
 
+# Generating Barcode Images
+
+The `examples/` directory contains scripts for generating barcode images:
+
+## SVG Example
+
+`examples/barcode_to_svg.rb` generates an SVG image with no dependencies:
+
+```ruby
+ruby examples/barcode_to_svg.rb
+```
+
+This creates `barcode.svg` - a scalable vector image you can view in any
+browser or embed in web pages.
+
+## PDF Example
+
+`examples/barcode_to_pdf.rb` generates a PDF document with barcode
+metadata. Requires the `prawn` gem:
+
+```ruby
+gem install prawn
+ruby examples/barcode_to_pdf.rb
+```
+
+This creates `barcode.pdf` with the barcode and its component fields.
+
+Both examples use the same test data and generate barcodes according to
+USPS specifications with proper bar heights (Ascender, Descender, Tracker,
+and Full).
+
 # Standard
 
 This gem is based upon standard
