@@ -13,5 +13,5 @@ barcode = Imb::Barcode.new(barcode_id,
                            mailer_id,
                            serial_number,
                            routing_code)
-p barcode.barcode_letters
-# => "AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA"
+puts barcode.barcode_letters
+# => AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA
