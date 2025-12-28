@@ -12,12 +12,16 @@ require 'usps_intelligent_barcode'
 # - Full (F): Very tall bar extending both up and down
 
 class BarcodeToSVG
+  OUTPUT_DIR = '/tmp'
+  OUTPUT_FILENAME = 'barcode.svg'
+  OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
   SCALE = 3
-  BAR_WIDTH = 1.44 * SCALE
-  BAR_SPACING = 0.78 * SCALE
-  TRACKER_HEIGHT = 4.32 * SCALE
-  ASCENDER_HEIGHT = 6.35 * SCALE
-  DESCENDER_HEIGHT = 6.35 * SCALE
+  # Dimensions from USPS-B-3200 spec (in points, scaled by SCALE for visibility)
+  BAR_WIDTH = 1.44 * SCALE       # points
+  BAR_SPACING = 0.78 * SCALE     # points
+  TRACKER_HEIGHT = 4.32 * SCALE  # points
+  ASCENDER_HEIGHT = 6.35 * SCALE # points
+  DESCENDER_HEIGHT = 6.35 * SCALE # points
   FULL_HEIGHT = ASCENDER_HEIGHT + TRACKER_HEIGHT + DESCENDER_HEIGHT
 
   def initialize(barcode)
@@ -28,18 +32,15 @@ class BarcodeToSVG
   def generate
     width = @letters.length * (BAR_WIDTH + BAR_SPACING) + BAR_SPACING
     height = FULL_HEIGHT + 2 * SCALE
-
     svg = []
     svg << '<?xml version="1.0" encoding="UTF-8"?>'
     svg << %Q{<svg xmlns="http://www.w3.org/2000/svg" width="#{width}" height="#{height}" viewBox="0 0 #{width} #{height}">}
     svg << %Q{  <rect width="#{width}" height="#{height}" fill="white"/>}
-
     x = BAR_SPACING
     @letters.each_char do |letter|
       svg << draw_bar(x, letter)
       x += BAR_WIDTH + BAR_SPACING
     end
-
     svg << '</svg>'
     svg.join("\n")
   end
@@ -57,7 +58,6 @@ class BarcodeToSVG
     when 'F'
       [SCALE, FULL_HEIGHT]
     end
-
     %Q{  <rect x="#{x}" y="#{y}" width="#{BAR_WIDTH}" height="#{height}" fill="black"/>}
   end
 end
@@ -72,6 +72,6 @@ barcode = Imb::Barcode.new(
 )
 
 svg = BarcodeToSVG.new(barcode).generate
-File.write('barcode.svg', svg)
-puts "Generated barcode.svg"
+File.write(BarcodeToSVG::OUTPUT_PATH, svg)
+puts "Generated #{BarcodeToSVG::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"

@@ -20,6 +20,10 @@ end
 # - Full (F): Very tall bar extending both up and down
 
 class BarcodeToPDF
+  OUTPUT_DIR = '/tmp'
+  OUTPUT_FILENAME = 'barcode.pdf'
+  OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
+  # Dimensions from USPS-B-3200 spec (in points, 1/72 inch)
   BAR_WIDTH = 1.44
   BAR_SPACING = 0.78
   TRACKER_HEIGHT = 4.32
@@ -36,16 +40,13 @@ class BarcodeToPDF
     Prawn::Document.generate(filename, page_size: 'LETTER') do |pdf|
       pdf.text "USPS Intelligent Mail Barcode", size: 16, style: :bold
       pdf.move_down 10
-
       pdf.text "Barcode ID: #{@barcode.barcode_id}"
       pdf.text "Service Type: #{@barcode.service_type}"
       pdf.text "Mailer ID: #{@barcode.mailer_id}"
       pdf.text "Serial Number: #{@barcode.serial_number}"
       pdf.text "Routing Code: #{@barcode.routing_code}"
       pdf.move_down 20
-
       draw_barcode(pdf, 50, pdf.cursor)
-
       pdf.move_down FULL_HEIGHT + 10
       pdf.text "Barcode string: #{@letters}", size: 8
     end
@@ -66,10 +67,8 @@ class BarcodeToPDF
       when 'F'
         [y - FULL_HEIGHT, FULL_HEIGHT]
       end
-
       pdf.fill_color '000000'
       pdf.fill_rectangle [current_x, bar_y + height], BAR_WIDTH, height
-
       current_x += BAR_WIDTH + BAR_SPACING
     end
   end
@@ -85,6 +84,6 @@ barcode = Imb::Barcode.new(
 )
 
 pdf_generator = BarcodeToPDF.new(barcode)
-pdf_generator.generate('barcode.pdf')
-puts "Generated barcode.pdf"
+pdf_generator.generate(BarcodeToPDF::OUTPUT_PATH)
+puts "Generated #{BarcodeToPDF::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"
