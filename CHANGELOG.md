@@ -1,3 +1,8 @@
+# Development
+
+* Supports Ruby 4.0, 3.4, 3.3, 3.2
+* Support for Ruby 3.1 and earlier dropped
+
 # 1.0.0 - 2016-11-26
 
 * Switch to semantic versioning.  Version 1.0.0 has the same API as

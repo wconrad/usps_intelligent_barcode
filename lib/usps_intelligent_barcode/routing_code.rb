@@ -101,23 +101,16 @@ module Imb
 
     # @!endgroup
 
-    protected
-
     # Convert to an array of [zip, plus4, delivery point]
+    # @return [Array<Integer, Integer, Integer>]
+    # @note Public for testing
     def to_a
       [@zip, @plus4, @delivery_point]
     end
 
-    private
-
-    NUM_DIGITS = 11 #:nodoc:
-
-    def arg_to_i(o)
-      o.andand.to_i
-    end
-    
     # Convert to an integer value
-
+    # @return [Integer]
+    # @note Public for testing
     def convert
       if @zip && @plus4 && @delivery_point
         @zip * 1000000 + @plus4 * 100 + @delivery_point + 1000100001
@@ -128,6 +121,14 @@ module Imb
       else
         0
       end
+    end
+
+    private
+
+    NUM_DIGITS = 11 #:nodoc:
+
+    def arg_to_i(o)
+      o.andand.to_i
     end
 
   end

@@ -64,34 +64,8 @@ module Imb
     def barcode_letters
       symbols.map(&:letter).join
     end
-    
-    private
 
-    # :stopdoc:
-    BAR_MAP = BarMap.new
-    CODEWORD_MAP = CodewordMap.new
-    CRC = Crc.new
-    # :startdoc:
-
-    def validate_components
-      components.each do |component|
-        component.validate(long_mailer_id?)
-      end
-    end
-
-    def components
-      [
-        @routing_code,
-        @barcode_id,
-        @service_type,
-        @mailer_id,
-        @serial_number,
-      ]
-    end
-
-    def long_mailer_id?
-      @mailer_id.long?
-    end
+    # @!group Algorithm Steps - Public for testing
 
     # The components ("fields" in the spec) are turned into a single
     # number that the spec calls "binary_data").  This is done through
@@ -178,6 +152,36 @@ module Imb
           character
         end
       end
+    end
+
+    # @!endgroup
+
+    private
+
+    # :stopdoc:
+    BAR_MAP = BarMap.new
+    CODEWORD_MAP = CodewordMap.new
+    CRC = Crc.new
+    # :startdoc:
+
+    def validate_components
+      components.each do |component|
+        component.validate(long_mailer_id?)
+      end
+    end
+
+    def components
+      [
+        @routing_code,
+        @barcode_id,
+        @service_type,
+        @mailer_id,
+        @serial_number,
+      ]
+    end
+
+    def long_mailer_id?
+      @mailer_id.long?
     end
 
     # Map the "characters" to symbols.  Here is where the barcode is made.
