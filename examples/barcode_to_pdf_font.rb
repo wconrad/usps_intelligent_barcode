@@ -23,9 +23,8 @@ end
 # - USPSIMB (same as Standard)
 
 class BarcodeToPDFFont
-  OUTPUT_DIR = '/tmp'
+
   OUTPUT_FILENAME = 'barcode_font.pdf'
-  OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
   FONT_NAME = 'USPSIMBStandard'
   FONT_FILE = '/usr/share/fonts/truetype/usps/USPSIMBStandard.ttf'
   FONT_SIZE = 16 # points (USPS recommended size for standard fonts)
@@ -35,22 +34,21 @@ class BarcodeToPDFFont
     @letters = barcode.barcode_letters
   end
 
-  def generate(filename)
-    Prawn::Document.generate(filename, page_size: 'LETTER') do |pdf|
+  def generate(path)
+    Prawn::Document.generate(path, page_size: 'LETTER') do |pdf|
       pdf.text "USPS Intelligent Mail Barcode (Font-Based)", size: 16, style: :bold
       pdf.move_down 10
-      pdf.text "Barcode ID: #{@barcode.barcode_id}"
-      pdf.text "Service Type: #{@barcode.service_type}"
-      pdf.text "Mailer ID: #{@barcode.mailer_id}"
-      pdf.text "Serial Number: #{@barcode.serial_number}"
-      pdf.text "Routing Code: #{@barcode.routing_code}"
-      pdf.move_down 20
+      pdf.text "Barcode ID: #{@barcode.barcode_id.to_s}"
+      pdf.text "Service Type: #{@barcode.service_type.to_s}"
+      pdf.text "Mailer ID: #{@barcode.mailer_id.to_s}"
+      pdf.text "Serial Number: #{@barcode.serial_number.to_s}"
+      pdf.text "Routing Code: #{@barcode.routing_code.to_s}"
+      pdf.text "\n"
+      pdf.text "Barcode string: #{@letters}", size: 8
+      pdf.text "\n"
+      pdf.text "Barcode string printed with font #{FONT_NAME} #{FONT_SIZE}"
       render_barcode(pdf)
       pdf.move_down 10
-      pdf.text "Barcode string: #{@letters}", size: 8
-      pdf.move_down 20
-      pdf.text "Note: Requires USPS IMB font to be installed.", size: 10
-      pdf.text "See FONT_INSTALLATION.md for installation instructions.", size: 10
     end
   end
 
@@ -79,6 +77,6 @@ barcode = Imb::Barcode.new(
 )
 
 pdf_generator = BarcodeToPDFFont.new(barcode)
-pdf_generator.generate(BarcodeToPDFFont::OUTPUT_PATH)
-puts "Generated #{BarcodeToPDFFont::OUTPUT_PATH}"
-puts "Barcode string: #{barcode.barcode_letters}"
+path = "/tmp/barcode_to_pdf.pdf"
+pdf_generator.generate(path)
+puts "Generated #{path}"
