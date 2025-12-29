@@ -57,6 +57,3 @@ svg = BarcodeToSVGFont.new(barcode).generate
 File.write(BarcodeToSVGFont::OUTPUT_PATH, svg)
 puts "Generated #{BarcodeToSVGFont::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"
-puts ""
-puts "Note: Requires USPS IMB font to be installed."
-puts "See FONT_INSTALLATION.md for installation instructions."

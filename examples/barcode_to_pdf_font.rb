@@ -82,6 +82,3 @@ pdf_generator = BarcodeToPDFFont.new(barcode)
 pdf_generator.generate(BarcodeToPDFFont::OUTPUT_PATH)
 puts "Generated #{BarcodeToPDFFont::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"
-puts ""
-puts "Note: Requires USPS IMB font to be installed."
-puts "See FONT_INSTALLATION.md for installation instructions."
