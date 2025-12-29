@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 lib_dir = File.expand_path('../lib', __dir__)
 $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 require 'usps_intelligent_barcode'
@@ -26,7 +27,7 @@ class BarcodeToPDFFont
   OUTPUT_FILENAME = 'barcode_font.pdf'
   OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
   FONT_NAME = 'USPSIMBStandard'
-  FONT_SIZE = 24 # points
+  FONT_SIZE = 16 # points (USPS recommended size for standard fonts)
 
   def initialize(barcode)
     @barcode = barcode

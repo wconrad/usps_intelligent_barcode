@@ -18,7 +18,7 @@ class BarcodeToSVGFont
   OUTPUT_FILENAME = 'barcode_font.svg'
   OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
   FONT_FAMILY = 'USPSIMBStandard'
-  FONT_SIZE = 24 # points
+  FONT_SIZE = 16 # points (USPS recommended size for standard fonts)
 
   def initialize(barcode)
     @barcode = barcode
