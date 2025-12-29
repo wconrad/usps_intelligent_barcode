@@ -5,8 +5,8 @@ require 'usps_intelligent_barcode'
 
 # Generate an SVG using a USPS Intelligent Mail Barcode font
 #
-# Requires one of the USPS IMB fonts to be installed:
-# https://ribbs.usps.gov/onecodesolution/download.cfm
+# Requires one of the USPS IMB fonts to be installed.
+# See FONT_INSTALLATION.md for installation instructions.
 #
 # Font options:
 # - USPSIMBCompact
@@ -58,5 +58,5 @@ File.write(BarcodeToSVGFont::OUTPUT_PATH, svg)
 puts "Generated #{BarcodeToSVGFont::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"
 puts ""
-puts "Note: Requires USPS IMB font installed from:"
-puts "https://ribbs.usps.gov/onecodesolution/download.cfm"
+puts "Note: Requires USPS IMB font to be installed."
+puts "See FONT_INSTALLATION.md for installation instructions."

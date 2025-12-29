@@ -14,8 +14,8 @@ end
 
 # Generate a PDF using a USPS Intelligent Mail Barcode font
 #
-# Requires one of the USPS IMB fonts to be installed:
-# https://ribbs.usps.gov/onecodesolution/download.cfm
+# Requires one of the USPS IMB fonts to be installed.
+# See FONT_INSTALLATION.md for installation instructions.
 #
 # Font options:
 # - USPSIMBCompact
@@ -48,8 +48,8 @@ class BarcodeToPDFFont
       pdf.move_down 10
       pdf.text "Barcode string: #{@letters}", size: 8
       pdf.move_down 20
-      pdf.text "Note: Requires USPS IMB font installed from:", size: 10
-      pdf.text "https://ribbs.usps.gov/onecodesolution/download.cfm", size: 10
+      pdf.text "Note: Requires USPS IMB font to be installed.", size: 10
+      pdf.text "See FONT_INSTALLATION.md for installation instructions.", size: 10
     end
   end
 
@@ -61,8 +61,7 @@ class BarcodeToPDFFont
     end
   rescue Prawn::Errors::UnknownFont
     pdf.text "ERROR: Font '#{FONT_NAME}' not found", size: 12, style: :bold
-    pdf.text "Please install USPS IMB fonts from:", size: 10
-    pdf.text "https://ribbs.usps.gov/onecodesolution/download.cfm", size: 10
+    pdf.text "See FONT_INSTALLATION.md for installation instructions.", size: 10
     pdf.move_down 10
     pdf.text "Barcode letters (install font to render): #{@letters}", size: 8
   end
@@ -82,5 +81,5 @@ pdf_generator.generate(BarcodeToPDFFont::OUTPUT_PATH)
 puts "Generated #{BarcodeToPDFFont::OUTPUT_PATH}"
 puts "Barcode string: #{barcode.barcode_letters}"
 puts ""
-puts "Note: Requires USPS IMB font installed from:"
-puts "https://ribbs.usps.gov/onecodesolution/download.cfm"
+puts "Note: Requires USPS IMB font to be installed."
+puts "See FONT_INSTALLATION.md for installation instructions."

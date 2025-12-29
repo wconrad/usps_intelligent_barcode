@@ -90,8 +90,8 @@ gem install prawn && ruby examples/barcode_to_pdf_font.rb
 ```
 
 These require a USPS IMB font (USPSIMBStandard, USPSIMBCompact, or
-USPSIMB) installed from
-https://ribbs.usps.gov/onecodesolution/download.cfm
+USPSIMB) to be installed. See [FONT_INSTALLATION.md](FONT_INSTALLATION.md)
+for detailed installation instructions.
 
 # Standard
 
