@@ -2,6 +2,8 @@
 
 * Supports Ruby 4.0, 3.4, 3.3, 3.2
 * Support for Ruby 3.1 and earlier dropped
+* Add #to_s methods to component classes
+  (e.g. `barcode.barcode_id.to_s`)
 
 # 1.0.0 - 2016-11-26
 

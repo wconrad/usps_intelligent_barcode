@@ -108,6 +108,15 @@ module Imb
       [@zip, @plus4, @delivery_point]
     end
 
+    # Convert to a string
+    def to_s
+      "%05d%04d%02d" % [
+        @zip,
+        @plus4,
+        @delivery_point,
+      ]
+    end
+
     # Convert to an integer value
     # @return [Integer]
     # @note Public for testing

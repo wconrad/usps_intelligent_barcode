@@ -36,9 +36,14 @@ module Imb
       false
     end
 
-    # @return [Integer] The value of the service type
+    # @return [Integer] The integer value of the service type
     def to_i
       @value
+    end
+
+    # @return [Integer] The string value of the service type
+    def to_s
+      @value.to_s
     end
 
     # @!group Internal

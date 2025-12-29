@@ -37,9 +37,14 @@ module Imb
       false
     end
 
-    # @return [Integer] The value of the serial number
+    # @return [Integer] The integer value of the serial number
     def to_i
       @value
+    end
+
+    # @return [String] The string value of the serial number
+    def to_s
+      @value.to_s
     end
 
     # @!group Internal

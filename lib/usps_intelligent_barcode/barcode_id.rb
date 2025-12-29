@@ -52,6 +52,11 @@ module Imb
       @value
     end
 
+    # @return [String] The string value of the barcode ID
+    def to_s
+      "%02d" % @value
+    end
+
     # @!group Internal
 
     # Validate the value.

@@ -47,9 +47,14 @@ module Imb
       false
     end
 
-    # @return [Integer] The value of the mailer ID
+    # @return [Integer] The integer value of the mailer ID
     def to_i
       @value
+    end
+
+    # @return [String] The string value of the mailer ID
+    def to_s
+      @value.to_s
     end
 
     # @!group Internal
