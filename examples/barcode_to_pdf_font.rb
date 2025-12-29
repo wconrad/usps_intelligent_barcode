@@ -60,10 +60,9 @@ class BarcodeToPDFFont
       pdf.text @letters, size: FONT_SIZE
     end
   rescue Prawn::Errors::UnknownFont
-    pdf.text "ERROR: Font '#{FONT_NAME}' not found", size: 12, style: :bold
-    pdf.text "See FONT_INSTALLATION.md for installation instructions.", size: 10
-    pdf.move_down 10
-    pdf.text "Barcode letters (install font to render): #{@letters}", size: 8
+    $stderr.puts "ERROR: Font '#{FONT_NAME}' not found"
+    $stderr.puts "See FONT_INSTALLATION.md for installation instructions."
+    exit 1
   end
 end
 
