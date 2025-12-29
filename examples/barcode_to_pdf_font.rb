@@ -27,6 +27,7 @@ class BarcodeToPDFFont
   OUTPUT_FILENAME = 'barcode_font.pdf'
   OUTPUT_PATH = File.join(OUTPUT_DIR, OUTPUT_FILENAME)
   FONT_NAME = 'USPSIMBStandard'
+  FONT_FILE = '/usr/share/fonts/truetype/usps/USPSIMBStandard.ttf'
   FONT_SIZE = 16 # points (USPS recommended size for standard fonts)
 
   def initialize(barcode)
@@ -56,13 +57,15 @@ class BarcodeToPDFFont
   private
 
   def render_barcode(pdf)
+    unless File.exist?(FONT_FILE)
+      $stderr.puts "ERROR: Font file not found: #{FONT_FILE}"
+      $stderr.puts "See FONT_INSTALLATION.md for installation instructions."
+      exit 1
+    end
+    pdf.font_families.update(FONT_NAME => { normal: FONT_FILE })
     pdf.font(FONT_NAME) do
       pdf.text @letters, size: FONT_SIZE
     end
-  rescue Prawn::Errors::UnknownFont
-    $stderr.puts "ERROR: Font '#{FONT_NAME}' not found"
-    $stderr.puts "See FONT_INSTALLATION.md for installation instructions."
-    exit 1
   end
 end
 
