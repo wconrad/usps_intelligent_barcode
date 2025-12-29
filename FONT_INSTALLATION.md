@@ -21,7 +21,7 @@ unzip ../uspsFontsNonAFP-1.4.0.zip
 cd fonts/scalable/trueType/
 sudo mkdir -p /usr/share/fonts/truetype/usps
 sudo cp *.ttf /usr/share/fonts/truetype/usps/
-sudo fc-cache -fv
+sudo fc-cache -f
 fc-list | grep -i usps
 ```
 
