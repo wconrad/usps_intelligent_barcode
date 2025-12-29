@@ -13,35 +13,44 @@ Official USPS Source (Free):
 
 ## Installation on Linux
 
-### User Installation (Recommended)
+### System-wide Installation (Recommended)
+
+For reliable application access (requires sudo):
 
 ```bash
-# Create user fonts directory if it doesn't exist
-mkdir -p ~/.fonts
-
 # Download and extract (replace with your download location)
 cd ~/Downloads
 unzip uspsFontsNonAFP-1.4.0.zip
 cd uspsFontsNonAFP-1.4.0/fonts/scalable/trueType/
 
-# Copy TrueType fonts to user fonts directory
-cp *.ttf ~/.fonts/
+# Install to system fonts directory
+sudo mkdir -p /usr/share/fonts/truetype/usps
+sudo cp *.ttf /usr/share/fonts/truetype/usps/
 
 # Refresh font cache
-fc-cache -fv
+sudo fc-cache -fv
 
 # Verify installation
 fc-list | grep -i usps
 ```
 
-### System-wide Installation (Alternative)
+### User Installation (Alternative)
 
-For system-wide access (requires sudo):
+For user-only access:
 
 ```bash
-sudo cp *.ttf /usr/share/fonts/truetype/
-sudo fc-cache -fv
+# Create user fonts directory if it doesn't exist
+mkdir -p ~/.fonts
+
+# Copy fonts (assumes already downloaded and extracted)
+cp *.ttf ~/.fonts/
+
+# Refresh font cache
+fc-cache -fv
 ```
+
+**Note:** Some applications (like Prawn) work more reliably with system-wide
+installed fonts.
 
 ## Available Fonts
 

@@ -84,14 +84,14 @@ Two additional examples use USPS barcode fonts instead of drawing bars:
 `examples/barcode_to_svg_font.rb` and `examples/barcode_to_pdf_font.rb`
 generate SVG and PDF files using USPS Intelligent Mail Barcode fonts.
 
+These require a USPS IMB font (USPSIMBStandard, USPSIMBCompact, or
+USPSIMB) to be installed system-wide. See
+[FONT_INSTALLATION.md](FONT_INSTALLATION.md) for installation instructions.
+
 ```ruby
 ruby examples/barcode_to_svg_font.rb
 gem install prawn && ruby examples/barcode_to_pdf_font.rb
 ```
-
-These require a USPS IMB font (USPSIMBStandard, USPSIMBCompact, or
-USPSIMB) to be installed. See [FONT_INSTALLATION.md](FONT_INSTALLATION.md)
-for detailed installation instructions.
 
 # Standard
 
