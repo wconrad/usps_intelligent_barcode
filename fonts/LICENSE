@@ -1,0 +1,47 @@
+USPS Intelligent Mail Barcode Fonts License
+============================================
+
+Copyright © US Postal Service 2009
+
+LICENSE GRANT
+
+The Postal Service grants you a world-wide, royalty-free, non-exclusive license
+to use the Software, Documentation, and Fonts in the mailing industry without
+paying a royalty or other fee, including rights to reproduce, display, merge,
+sell, distribute, sublicense, and translate them; and the right to create
+derivative works.
+
+CONDITIONS
+
+Redistribution of the Software, Documentation, and/or Fonts must contain:
+(a) the copyright notice set forth above
+(b) this list of conditions
+(c) the disclaimer noted below
+
+You may redistribute your versions of the Software and/or Fonts if your versions
+were created by making modifications or improvements for a legitimate purpose in
+furtherance of your or another's business.
+
+The US Postal Service reserves the right to change this License in any manner
+within reason at its discretion.
+
+DISCLAIMER
+
+THE POSTAL SERVICE DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE. IN NO EVENT SHALL THE POSTAL SERVICE BE LIABLE FOR ANY SPECIAL,
+INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+
+FONTS INCLUDED
+
+- USPSIMBStandard.ttf - Primary USPS Intelligent Mail Barcode font
+- USPSIMBCompact.ttf - Compact variant of the USPS Intelligent Mail Barcode font
+
+OFFICIAL SOURCE
+
+Official USPS font downloads and documentation:
+https://postalpro.usps.com/mailing/encoder-software-and-fonts
+https://postalpro.usps.com/onecodesolution

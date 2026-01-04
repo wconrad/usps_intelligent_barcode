@@ -4,6 +4,7 @@
 * Support for Ruby 3.1 and earlier dropped
 * Add #to_s methods to component classes
   (e.g. `barcode.barcode_id.to_s`)
+* Bundle USPS IMBC fonts.  Use Imb::UspsFonts to access them
 
 # 1.0.0 - 2016-11-26
 

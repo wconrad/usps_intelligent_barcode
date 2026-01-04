@@ -1,9 +1,25 @@
 # Installing USPS Intelligent Mail Barcode Fonts
 
-The font-based barcode examples require a USPS Intelligent Mail Barcode font
-to be installed on your system.
+## Bundled Fonts (Recommended)
 
-## Download the Font
+The USPS fonts are bundled with this gem - no installation required!
+
+The PDF generation example automatically uses the bundled fonts:
+
+```bash
+gem install prawn
+ruby examples/generate_pdf.rb
+```
+
+The bundled fonts are located in the gem's `fonts/` directory and are
+licensed by USPS for royalty-free use (see `fonts/LICENSE`).
+
+## System Installation (Optional)
+
+If you prefer to install the fonts system-wide for use in other applications,
+follow these instructions.
+
+### Download the Font
 
 Official USPS Source (Free):
 
