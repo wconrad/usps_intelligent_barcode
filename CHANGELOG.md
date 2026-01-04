@@ -1,3 +1,5 @@
+-*- mode: fundamental -*-
+
 # Development
 
 * Supports Ruby 4.0, 3.4, 3.3, 3.2
