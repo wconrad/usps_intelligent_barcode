@@ -46,52 +46,19 @@ p barcode.barcode_letters
 # => "AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA"
 ```
 
-# Generating Barcode Images
+# Generating Barcode PDFs
 
-The `examples/` directory contains scripts for generating barcode images:
-
-## SVG Example
-
-`examples/barcode_to_svg.rb` generates an SVG image with no dependencies:
-
-```ruby
-ruby examples/barcode_to_svg.rb
-```
-
-This creates `barcode.svg` - a scalable vector image you can view in any
-browser or embed in web pages.
-
-## PDF Example
-
-`examples/barcode_to_pdf.rb` generates a PDF document with barcode
-metadata. Requires the `prawn` gem:
+The gem includes bundled USPS Intelligent Mail Barcode fonts. To generate a
+PDF with a barcode:
 
 ```ruby
 gem install prawn
-ruby examples/barcode_to_pdf.rb
+ruby examples/generate_pdf.rb
 ```
 
-This creates `barcode.pdf` with the barcode and its component fields.
-
-Both examples use the same test data and generate barcodes according to
-USPS specifications with proper bar heights (Ascender, Descender, Tracker,
-and Full).
-
-## Font-Based Examples
-
-Two additional examples use USPS barcode fonts instead of drawing bars:
-
-`examples/barcode_to_svg_font.rb` and `examples/barcode_to_pdf_font.rb`
-generate SVG and PDF files using USPS Intelligent Mail Barcode fonts.
-
-These require a USPS IMB font (USPSIMBStandard, USPSIMBCompact, or
-USPSIMB) to be installed system-wide. See
-[FONT_INSTALLATION.md](FONT_INSTALLATION.md) for installation instructions.
-
-```ruby
-ruby examples/barcode_to_svg_font.rb
-gem install prawn && ruby examples/barcode_to_pdf_font.rb
-```
+This creates `/tmp/barcode_to_pdf.pdf` with the barcode and its component
+fields. The USPS fonts (USPSIMBStandard and USPSIMBCompact) are included
+in the `fonts/` directory - no installation required.
 
 # Standard
 

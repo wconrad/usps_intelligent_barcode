@@ -14,20 +14,13 @@ end
 
 # Generate a PDF using a USPS Intelligent Mail Barcode font
 #
-# Requires one of the USPS IMB fonts to be installed.
-# See FONT_INSTALLATION.md for installation instructions.
-#
-# Font options:
-# - USPSIMBCompact
-# - USPSIMBStandard
-# - USPSIMB (same as Standard)
+# Uses bundled USPS IMB fonts - no installation required.
 
 class BarcodeToPDFFont
-
   OUTPUT_FILENAME = 'barcode_font.pdf'
   FONT_NAME = 'USPSIMBStandard'
-  FONT_FILE = '/usr/share/fonts/truetype/usps/USPSIMBStandard.ttf'
-  FONT_SIZE = 16 # points (USPS recommended size for standard fonts)
+  FONT_FILE = Imb::UspsFonts.standard_font_path
+  FONT_SIZE = Imb::UspsFonts.font_size
 
   def initialize(barcode)
     @barcode = barcode
@@ -55,11 +48,6 @@ class BarcodeToPDFFont
   private
 
   def render_barcode(pdf)
-    unless File.exist?(FONT_FILE)
-      $stderr.puts "ERROR: Font file not found: #{FONT_FILE}"
-      $stderr.puts "See FONT_INSTALLATION.md for installation instructions."
-      exit 1
-    end
     pdf.font_families.update(FONT_NAME => { normal: FONT_FILE })
     pdf.font(FONT_NAME) do
       pdf.text @letters, size: FONT_SIZE
