@@ -2,6 +2,8 @@
 
 # Development
 
+# 1.1.0 2026-01-04
+
 * Supports Ruby 4.0, 3.4, 3.3, 3.2
 * Support for Ruby 3.1 and earlier dropped
 * Add #to_s methods to component classes
